@@ -1,0 +1,404 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-Thin_0.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-UltraLight_0.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-Light_0.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-Regular_0.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-Medium_0.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-Semibold_0.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/Gilroy/Gilroy-Bold_0.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --black: #304149;
+    --white: #FFFFFF;
+    --orange: #ED8936;
+    --blue: #1A365D;
+    --gray: #586E78;
+}
+
+body {
+    color: var(--white);
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 500;
+}
+
+body p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.h1,
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    line-height: 165%;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 0px;
+}
+
+.wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    min-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapLabel {
+    position: relative;
+    margin-bottom: 0;
+}
+
+.wrapLabel span {
+    font-weight: 200;
+    padding-left: 25px;
+    font-size: 13px;
+    display: block;
+    position: relative;
+}
+
+.wrapLabel span a {
+    color: #ef5e07;
+}
+
+.wrapLabel span:before {
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 8px);
+    content: '';
+    background: #fff;
+    border: 1px solid #a5a5a5;
+    border-radius: 3px;
+}
+
+.wrapLabel span:after {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 4px;
+    top: calc(50% - 4px);
+    content: '';
+    background: #dd6a1c;
+    border-radius: 2px;
+    opacity: 0;
+}
+
+.wrapLabel input:checked+span:after {
+    opacity: 1;
+}
+
+.wrapLabel input {
+    width: 10px !important;
+    height: 10px !important;
+    left: 0 !important;
+    top: 0 !important;
+    position: absolute !important;
+    opacity: 0 !important;
+}
+
+.flexSA {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flexSB {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.flexAI {
+    display: flex;
+    align-items: center;
+}
+
+.flexW {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexStart {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.flexEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* Главная страница */
+
+/* Шапка */
+
+.headerInner {
+    padding: 14px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.headerContactTabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    row-gap: 16px;
+    color: var(--black);
+}
+
+.headerContactTab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headerContactTab {
+    font-size: 18px;
+}
+
+.headerContactTabTimes {
+    color: var(--orange);
+}
+
+.headerGetContactBtn {
+    font-weight: 600;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange);
+    padding: 17px 31px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.headerGetContactBtn:hover {
+    background-color: var(--black);
+}
+
+
+.headerBottom {
+    background-color: var(--blue);
+}
+
+.headerLinks {
+    padding: 16.5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLink {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 110%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 46px;
+    border-right: 1px solid var(--gray);
+    transition: all 0.3s ease;
+}
+
+.headerLink:last-child {
+    border-right: none;
+    padding-right: 0px;
+}
+
+.headerLink:hover {
+    color: var(--orange);
+}
+
+
+/* Главный баннер */
+
+.mainBannerSection {
+    background-image: url("../images/mainBanner.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 1920px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.mainBannerContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.mainBannerLeft {
+    max-width: 730px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 70px;
+    padding-bottom: 120px;
+}
+
+.mainBannerRight {
+    padding-top: 40px;
+}
+
+.mainBannerDesc {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 117%;
+    letter-spacing: 0.05em;
+}
+
+.getContactBtn {
+    cursor: pointer;
+    max-width: 320px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange);
+    padding: 25px 70px;
+    font-size: 23px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+
+.getContactBtn:hover {
+    background-color: var(--black);
+}
+
+
+/* --- Media styles --- */
+
+@media screen and (min-width:1450px) {
+    .wrapper .container {
+        width: 1440px;
+    }
+}
+
+@media screen and (min-width:1200px) {}
+
+@media screen and (max-width:1199px) {}
+
+@media screen and (max-width:991px) {}
+
+@media screen and (max-width:767px) {}
+
+@media screen and (max-width:675px) {}
+
+@media screen and (max-width:640px) {}
+
+@media screen and (max-width:600px) {}
+
+@media screen and (max-width:485px) {}
+
+@media screen and (max-width:425px) {}
+
+@media screen and (max-width:400px) {}
+
+@media screen and (max-width:370px) {}
