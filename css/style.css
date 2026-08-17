@@ -635,7 +635,6 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 .asphaltTypesSection {
     padding-top: 150px;
-    padding-bottom: 150px;
     position: relative;
 }
 
@@ -651,10 +650,14 @@ h1, .h1, h2, .h2, h3, .h3 {
     z-index: 2;
 }
 
-.sectionHeadAsphalt {
+.sectionHeadFlex {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.sectionHeadFlex.alignFlexEnd {
+    align-items: flex-end;
 }
 
 .goCatalogBtn {
@@ -750,6 +753,117 @@ h1, .h1, h2, .h2, h3, .h3 {
 .readMoreLink:hover {
     background-color: var(--black);
 }
+
+
+
+
+
+/* Секция "Готовые объекты" */
+
+.finishedObjectsSection {
+    position: relative;
+    padding-top: 150px;
+} 
+
+.finishedObjectsSectionBg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.finishedObjectsInner {
+    position: relative;
+    z-index: 2;
+}
+
+.finishedObjectsCards {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: stretch;
+}
+
+.finishedObjectsCardImage {
+    width: 100%;
+    overflow: hidden;
+}
+
+.finishedObjectsCardImage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 450 / 226;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.finishedObjectsCardInfo {
+    background-color: var(--blue);
+    padding: 16px 27px;
+    min-height: 150px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.finishedObjectsCardTitle {
+    padding-bottom: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 126%;
+}
+
+.finishedObjectsCardDesc {
+    padding-bottom: 20px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 117%;
+    letter-spacing: 0.05em;
+}
+
+.finishedObjectsCardSize {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 126%;
+    color: var(--orange);
+}
+
+
+
+
+
+/* Секция "Наши Партнеры" */
+
+.ourPartnersSection {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.ourPartnersCards {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* --- Media styles --- */
 
