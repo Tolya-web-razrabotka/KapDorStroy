@@ -39,6 +39,14 @@
 }
 
 @font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu/Ubuntu-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Gilroy';
     src: url('../fonts/Gilroy/Gilroy-Semibold_0.ttf') format('truetype');
     font-weight: 600;
@@ -388,7 +396,6 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 76px;
     position: relative;
     z-index: 1;
-    padding-bottom: 1000px;
 }
 
 .buildRoadsInner {
@@ -400,9 +407,10 @@ h1, .h1, h2, .h2, h3, .h3 {
     position: absolute;
     top: 0;
     right: 0;
+    pointer-events: none;
 }
 
-.buildRoadsHeadDesc {
+.sectionHeadDesc {
     position: relative;
     padding-left: 48px;
     font-family: 'Gilroy', sans-serif;
@@ -413,7 +421,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     letter-spacing: 0.05em;
 }
 
-.buildRoadsHeadDesc::before {
+.sectionHeadDesc::before {
     content: '';
     position: absolute;
     left: 0;
@@ -540,8 +548,208 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 
 
+/* Секция "Объекты, которые меняют города" */
+
+.objectsSection {
+    padding-top: 172px;
+}
+
+.objectsContent {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: minmax(400px, 450px) 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.objectsContentLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.objectsContentRight {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.objectsCard {
+    position: relative;
+    width: 100%;
+}
+
+.objectsCardImage {
+    width: 100%;
+    height: 100%;
+}
+
+.objectsCardImage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.objectsCardTitle {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    z-index: 2;
+    max-width: 300px;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 126%;
+    color: var(--blue);
+    padding-left: 15px;
+}
+
+.objectsCardTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5px;
+    height: 41px;
+    background-color: var(--blue);
+}
+
+.objectsContentLeft .objectsCard {
+    max-width: 450px;
+    aspect-ratio: 450 / 660;
+}
+
+.objectsContentRight .objectsCard {
+    max-width: 450px;
+    aspect-ratio: 450 / 315;
+}
 
 
+
+
+/* Секция "Виды асфальта, которые производим" */
+
+.asphaltTypesSection {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    position: relative;
+}
+
+.asphaltTypesSectionBg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.asphaltTypesInner {
+    position: relative;
+    z-index: 2;
+}
+
+.sectionHeadAsphalt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.goCatalogBtn {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 110%;
+    color: var(--orange);
+    transition: all 0.3s ease;
+    padding: 20.5px;
+}
+
+.goCatalogBtn:hover {
+    color: var(--orange);
+    background-color: var(--black);
+}
+
+
+.asphaltTypesTabs {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.asphaltTypesTab {
+    padding: 15px 26.5px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 110%;
+    color: #4A5568;
+    cursor: pointer;
+}
+
+.asphaltTypesTab.active {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.asphaltTypesCards {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.asphaltTypesCard {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border: 1px solid #EAEAEA;
+    padding: 15px;
+}
+
+.asphaltTypesCardImage {
+    width: 100%;
+}
+
+.asphaltTypesCardImage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.asphaltTypesCardTitle {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 126%;
+    color: var(--blue);
+}
+
+.readMoreLink {
+    padding: 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 110%;
+    color: var(--white);
+    background-color: var(--orange);
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+
+.readMoreLink:hover {
+    background-color: var(--black);
+}
 
 /* --- Media styles --- */
 
