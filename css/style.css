@@ -31,6 +31,14 @@
 }
 
 @font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/proxima-nova-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Gilroy';
     src: url('../fonts/Gilroy/Gilroy-Medium_0.ttf') format('truetype');
     font-weight: 500;
@@ -76,6 +84,7 @@
     --orange: #ED8936;
     --blue: #1A365D;
     --gray: #586E78;
+    --bg: #f7fafc;
 }
 
 body {
@@ -396,6 +405,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 76px;
     position: relative;
     z-index: 1;
+    background-color: var(--bg);
 }
 
 .buildRoadsInner {
@@ -552,6 +562,20 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 .objectsSection {
     padding-top: 172px;
+    position: relative;
+    background-color: var(--bg);
+}
+
+.objectsBg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.objectsInner {
+    position: relative;
+    z-index: 2;
 }
 
 .objectsContent {
@@ -636,6 +660,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 .asphaltTypesSection {
     padding-top: 150px;
     position: relative;
+    background-color: var(--bg);
 }
 
 .asphaltTypesSectionBg {
@@ -763,6 +788,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 .finishedObjectsSection {
     position: relative;
     padding-top: 150px;
+    background-color: var(--bg);
 } 
 
 .finishedObjectsSectionBg {
@@ -844,6 +870,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 /* Секция "Наши Партнеры" */
 
 .ourPartnersSection {
+    background-color: var(--white);
     padding-top: 150px;
     padding-bottom: 150px;
 }
@@ -860,13 +887,16 @@ h1, .h1, h2, .h2, h3, .h3 {
 /* Footer */
 
 .footerInner {
-    background-color: var(--blue);
+    background-image: url("../images/footerBg.png");
+    background-repeat: no-repeat;
+    background-position: 100% 100%; 
+    background-size: cover;
 }
 
 .footerContent {
-    padding: 60px 0px;
+    padding: 60px 0px 40px 0px;
     display: grid;
-    grid-template-columns: minmax(330px, 1fr) 1fr;
+    grid-template-columns: minmax(330px, 463px) 1fr;
     gap: 30px;
 }
 
@@ -950,6 +980,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 
 .footerCopyright {
+    padding-bottom: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;    
@@ -959,21 +990,71 @@ h1, .h1, h2, .h2, h3, .h3 {
     display: flex;
     align-items: center;
     gap: 46px;
+}
+
+.footerCopyrightLeftLinks a {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 110%;
     color: var(--white);
+    transition: all 0.3s ease;  
+}
+
+.footerCopyrightLeftLinks a:hover {
+    color: var(--orange);
 }
 
 .footerCopyrightRight {
     text-align: right;
 }
 
-.footerCopyrightRightData {
-    
+.footerCopyrightRightLinks {
+    display: flex;
+    flex-direction: column;
 }
 
+.footerCopyrightRightData,
+.footerCopyrightRightLinks a {
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--white);
+}
+
+.footerCopyrightRightLinks a {
+    transition: all 0.3s ease;
+}
+
+
+.footerCopyrightRightLinks a:hover {
+    color: var(--orange);
+}
+
+
+.maps {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* Отключаем стили Яндекс Карты */
+
+[class*="copyrights-pane"] {
+	display: none !important;
+}
+
+/* Темная Яндекс карта */
+[class*="ground-pane"] {
+	filter: grayscale(60%);
+}
+
+/* Сброс стилей дефолтного балуна */
+.ymaps-b-balloon, .ymaps-b-balloon__layout, .ymaps-b-balloon__tail {
+  background: transparent !important;
+  box-shadow: none !important;
+}
 
 
 
