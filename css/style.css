@@ -857,10 +857,122 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 
 
+/* Footer */
+
+.footerInner {
+    background-color: var(--blue);
+}
+
+.footerContent {
+    padding: 60px 0px;
+    display: grid;
+    grid-template-columns: minmax(330px, 1fr) 1fr;
+    gap: 30px;
+}
+
+.footerLogo {
+    padding-left: 30px;
+    padding-bottom: 24px;
+}
+
+.footerContacts {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+.footerContacts::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.5px;
+    height: 191px;
+    background-color: var(--orange);
+}
+
+.footerContactsNumbers {
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerContactsNumber,
+.footerContactsEmail,
+.footerContactsAddress {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 110%;
+    color: var(--white);
+}
+
+.footerContactsPlace {
+    padding-top: 39px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footerContactsTimes {
+    padding-left: 20px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 110%;
+    color: #56768C;
+}
+
+.footerGetContactBtn {
+    max-width: 252px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px 31px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 110%;
+    color: var(--white);
+    background-color: var(--orange);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footerGetContactBtn:hover {
+    background-color: var(--black);
+}
 
 
+.footerCopyright {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
 
+.footerCopyrightLeftLinks {
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110%;
+    color: var(--white);
+}
 
+.footerCopyrightRight {
+    text-align: right;
+}
+
+.footerCopyrightRightData {
+    
+}
 
 
 
