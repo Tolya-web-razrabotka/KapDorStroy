@@ -15,6 +15,50 @@ $(document).ready(function () {
         slide: '.slideTOT'
     });
 
+    $('.dealsSlider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        appendDots: '.dealsDots',
+        customPaging: function (slider, i) {
+            return '<button></button>';
+        },
+        arrows: false,
+        infinite: false
+    });
+
+    $('.finishedObjectsCardSlider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        fade: false,
+        autoplay: false,
+        autoplaySpeed: 4000,
+        pauseOnHover: true,
+        swipe: true,
+        touchMove: true,
+        draggable: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    dots: true
+                }
+            }
+        ]
+    });
+
+
+
+
+
+    
+    // Яндекс карта
+
     var $maps = $("#map");
 
     if ($maps.length > 0) {
@@ -57,16 +101,4 @@ $(document).ready(function () {
             createMap("map");
         });
     }
-
-    $('.dealsSlider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true,
-        appendDots: '.dealsDots',
-        customPaging: function (slider, i) {
-            return '<button></button>';
-        },
-        arrows: false,
-        infinite: false
-    });
 });
