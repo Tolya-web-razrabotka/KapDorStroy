@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $('.sliderTreeOsTrack').slick({
         autoplay: false,
         autoplaySpeed: 3500,
@@ -15,9 +15,7 @@ $(document).ready(function() {
         slide: '.slideTOT'
     });
 
-    // Яндекс Карта 
-
-    var $maps = $("#map"); 
+    var $maps = $("#map");
 
     if ($maps.length > 0) {
         var center = [56.32257053322084, 44.00141489727857];
@@ -55,8 +53,20 @@ $(document).ready(function() {
             map.geoObjects.add(placemark);
         }
 
-        ymaps.ready(function() {
+        ymaps.ready(function () {
             createMap("map");
         });
     }
+
+    $('.dealsSlider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        appendDots: '.dealsDots',
+        customPaging: function (slider, i) {
+            return '<button></button>';
+        },
+        arrows: false,
+        infinite: false
+    });
 });
