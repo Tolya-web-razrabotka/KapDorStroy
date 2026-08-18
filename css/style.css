@@ -602,6 +602,15 @@ h1, .h1, h2, .h2, h3, .h3 {
 .objectsCard {
     position: relative;
     width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+}
+
+.objectsCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    z-index: 10;
 }
 
 .objectsCardImage {
@@ -990,9 +999,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 
 
-
 /* Секция "Готовые объекты" */
-
 
 .finishedObjectsSection {
     position: relative;
@@ -1021,13 +1028,114 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 
 .finishedObjectsCard {
-    width: 450px;
     max-width: 100%;
     height: 375px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     background: var(--blue);
+    cursor: pointer;
+    position: relative;
+}
+
+.finishedObjectsCardInfo {
+    background-color: var(--blue);
+    padding: 15px 27px;
+    height: 149px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardInfo {
+    padding-bottom: 15px;
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardMoreLink {
+    font-family: 'Gilroy';
+    font-weight: 600;
+    font-size: 20px;
+    max-width: 214px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--orange);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.finishedObjectsCard.hasLink:hover .finishedObjectsCardMoreLink {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 49px;
+    padding: 13.5px 0px;
+    margin-top: 8px;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardMoreLink:hover {
+    background-color: var(--black);
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardMoreLink img {
+    padding-top: 2px;
+    transition: transform 0.3s ease;
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardInfo {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                padding 0.5s ease;
+    transform: translateY(0);
+}
+
+.finishedObjectsCard.hasLink:hover .finishedObjectsCardInfo {
+    transform: translateY(-57px);
+    padding: 15px 27px 20px;
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardTitle {
+    transition: padding-bottom 0.4s ease;
+}
+
+.finishedObjectsCard.hasLink:hover .finishedObjectsCardTitle {
+    padding-bottom: 4px;
+}
+
+.finishedObjectsCard.hasLink .finishedObjectsCardSlider .slick-dots {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.finishedObjectsCard.hasLink:hover .finishedObjectsCardSlider .slick-dots {
+    transform: translateY(-70px);
+}
+
+.finishedObjectsCard:not(.hasLink):hover .finishedObjectsCardInfo {
+    transform: translateY(0);
+    padding: 15px 27px;
+}
+
+.finishedObjectsCard:not(.hasLink):hover .finishedObjectsCardTitle {
+    padding-bottom: 10px;
+}
+
+.finishedObjectsCard:not(.hasLink):hover .finishedObjectsCardSlider .slick-dots {
+    transform: translateY(0);
 }
 
 .finishedObjectsCardSlider {
@@ -1036,6 +1144,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     height: 226px;
     flex-shrink: 0;
     overflow: hidden;
+    z-index: 1;
 }
 
 .finishedObjectsCardSlider .slick-track {
@@ -1070,17 +1179,6 @@ h1, .h1, h2, .h2, h3, .h3 {
     object-position: center top;
 }
 
-.finishedObjectsCardInfo {
-    background-color: var(--blue);
-    padding: 12px 20px;
-    height: 149px;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .finishedObjectsCardTitle {
     padding-bottom: 10px;
     font-family: 'Ubuntu', sans-serif;
@@ -1095,7 +1193,8 @@ h1, .h1, h2, .h2, h3, .h3 {
     font-size: 16px;
     line-height: 117%;
     letter-spacing: 0.05em;
-    flex: 1;
+    flex: 0 0 auto;
+    min-height: 45px;
 }
 
 .finishedObjectsCardSize {
@@ -1107,6 +1206,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     font-size: 17px;
     line-height: 126%;
     color: var(--orange);
+    flex-shrink: 0;
 }
 
 .finishedObjectsCardSize img {
@@ -1203,7 +1303,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 .finishedObjectsCardSlider .slick-dots .slick-active button:hover {
     background-color: var(--orange);
 }
-
+/* 
 @media (max-width: 1024px) {
     .finishedObjectsCards {
         grid-template-columns: repeat(2, 1fr);
@@ -1213,8 +1313,16 @@ h1, .h1, h2, .h2, h3, .h3 {
     .finishedObjectsCard {
         width: 100%;
         max-width: 450px;
-        height: auto;
-        aspect-ratio: 450 / 375;
+        height: 375px;
+    }
+
+    .finishedObjectsCard.hasLink:hover .finishedObjectsCardInfo {
+        transform: translateY(-60px);
+        padding: 15px 27px 18px;
+    }
+
+    .finishedObjectsCard.hasLink:hover .finishedObjectsCardSlider .slick-dots {
+        transform: translateY(-60px);
     }
 }
 
@@ -1232,18 +1340,31 @@ h1, .h1, h2, .h2, h3, .h3 {
     .finishedObjectsCard {
         width: 100%;
         max-width: 450px;
-        height: auto;
-        aspect-ratio: 450 / 375;
+        height: 375px;
+    }
+
+    .finishedObjectsCard.hasLink:hover .finishedObjectsCardInfo {
+        transform: translateY(-55px);
+        padding: 10px 16px 14px;
+    }
+
+    .finishedObjectsCard.hasLink:hover .finishedObjectsCardSlider .slick-dots {
+        transform: translateY(-55px);
     }
     
     .finishedObjectsCardInfo {
+        padding: 10px 16px;
+        height: 149px;
+    }
+
+    .finishedObjectsCard.hasLink .finishedObjectsCardInfo {
         padding: 10px 16px;
     }
     
     .finishedObjectsCardTitle {
         font-size: 15px;
     }
-    
+
     .finishedObjectsCardDesc {
         font-size: 13px;
     }
@@ -1251,9 +1372,16 @@ h1, .h1, h2, .h2, h3, .h3 {
     .finishedObjectsCardSize {
         font-size: 15px;
     }
-}
 
+    .finishedObjectsCardMoreLink {
+        font-size: 16px;
+        max-width: 180px;
+    }
 
+    .finishedObjectsCard.hasLink:hover .finishedObjectsCardMoreLink {
+        padding: 11px 0px;
+    }
+} */
 
 /* Секция "Наши Партнеры" */
 
