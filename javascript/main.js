@@ -52,11 +52,42 @@ $(document).ready(function () {
         ]
     });
 
+    $('.asphaltTypesTab').on('click', function () {
+        var tabId = $(this).data('tab');
+        
+        if ($(this).hasClass('active')) {
+            return;
+        }
 
+        $('.asphaltTypesTab').removeClass('active');
+        $(this).addClass('active');
 
+        var $allCards = $('.asphaltTypesCards');
+        var $targetCards = $('.asphaltTypesCards[data-tab="' + tabId + '"]');
 
+        $allCards.each(function () {
+            var $this = $(this);
+            if ($this.data('tab') !== tabId) {
+                $this.fadeOut(400);
+            }
+        });
+
+        setTimeout(function () {
+            $targetCards.fadeIn(500);
+        }, 200);
+    });
+
+    var activeTabId = $('.asphaltTypesTab.active').data('tab');
+    $('.asphaltTypesCards').each(function () {
+        if ($(this).data('tab') === activeTabId) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
 
     
+
     // Яндекс карта
 
     var $maps = $("#map");
