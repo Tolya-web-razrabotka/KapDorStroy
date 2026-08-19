@@ -115,11 +115,17 @@ a:focus {
     height: 100%;
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
     margin-top: 0px;
 }
 
-.h1, h1 {
+.h1,
+h1 {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
     font-size: 35px;
@@ -128,7 +134,8 @@ h1, .h1, h2, .h2, h3, .h3 {
     line-height: 165%;
 }
 
-.h2, h2 {
+.h2,
+h2 {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
     font-size: 35px;
@@ -1005,7 +1012,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     position: relative;
     padding-top: 150px;
     background-color: var(--bg);
-} 
+}
 
 .finishedObjectsSectionBg {
     position: absolute;
@@ -1099,8 +1106,8 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 
 .finishedObjectsCard.hasLink .finishedObjectsCardInfo {
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                padding 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        padding 0.5s ease;
     transform: translateY(0);
 }
 
@@ -1303,6 +1310,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 .finishedObjectsCardSlider .slick-dots .slick-active button:hover {
     background-color: var(--orange);
 }
+
 /* 
 @media (max-width: 1024px) {
     .finishedObjectsCards {
@@ -1391,15 +1399,15 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-bottom: 150px;
     position: relative;
     z-index: 2;
-    
-    box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.04), 
-                0px 10px 30px rgba(0, 0, 0, 0.04);
+
+    box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.04),
+        0px 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 .ourPartnersInner {
     padding: 40px 0px 68px 0px;
 }
-    
+
 .ourPartnersCards {
     padding-top: 50px;
     display: grid;
@@ -1414,7 +1422,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 .footerInner {
     background-image: url("../images/footerBg.png");
     background-repeat: no-repeat;
-    background-position: 100% 100%; 
+    background-position: 100% 100%;
     background-size: cover;
 }
 
@@ -1508,7 +1516,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     padding-bottom: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
 .footerCopyrightLeftLinks {
@@ -1523,7 +1531,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     font-size: 16px;
     line-height: 110%;
     color: var(--white);
-    transition: all 0.3s ease;  
+    transition: all 0.3s ease;
 }
 
 .footerCopyrightLeftLinks a:hover {
@@ -1567,19 +1575,400 @@ h1, .h1, h2, .h2, h3, .h3 {
 /* Отключаем стили Яндекс Карты */
 
 [class*="copyrights-pane"] {
-	display: none !important;
+    display: none !important;
 }
 
-/* Темная Яндекс карта */
 [class*="ground-pane"] {
-	filter: grayscale(60%);
+    filter: grayscale(60%);
 }
 
-/* Сброс стилей дефолтного балуна */
-.ymaps-b-balloon, .ymaps-b-balloon__layout, .ymaps-b-balloon__tail {
-  background: transparent !important;
-  box-shadow: none !important;
+.ymaps-b-balloon,
+.ymaps-b-balloon__layout,
+.ymaps-b-balloon__tail {
+    background: transparent !important;
+    box-shadow: none !important;
 }
+
+
+
+
+/* Модальное окно "Нужна консультация?" */
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modalWindow {
+    background: #E1EAF6;
+    max-width: 839px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding: 40px 67px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalClose {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    transition: opacity 0.3s ease;
+}
+
+.modalClose svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--black);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease;
+}
+
+.modalClose:hover svg {
+    stroke: var(--orange);
+}
+
+.modalTitle {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 165%;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.modalDesc {
+    position: relative;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117%;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    padding-left: 50px;
+}
+
+.modalDesc::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 41px;
+    height: 2.5px;
+    background-color: var(--blue);
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.modalFormRow {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.modalFormGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modalFormGroup label {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--gray);
+    letter-spacing: 0.03em;
+}
+
+.modalFormGroup input,
+.modalFormGroup textarea {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--black);
+    background: var(--white);
+    border: 1px solid transparent;
+    padding: 15px 14px 15px 20px;
+    width: 100%;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.modalFormGroup input:focus,
+.modalFormGroup textarea:focus {
+    border-color: var(--orange);
+    background: var(--white);
+}
+
+.modalFormGroup input::placeholder,
+.modalFormGroup textarea::placeholder {
+    color: #4A5568;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 136%;
+
+}
+
+.modalFormGroupInput {
+    position: relative;
+    width: 100%;
+}
+
+.modalFormGroupInput img {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.modalFormGroupInput input {
+    padding-left: 40px;
+}
+
+.modalFormGroup textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.modalFormGroup.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.modalFormSubmitRow {
+    display: grid;
+    grid-template-columns: minmax(0px, 277px) auto;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.modalFormSubmitBtn {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 110%;
+    color: var(--white);
+    background: var(--orange);
+    padding: 18px 48px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    min-width: 200px;
+    text-align: center;
+}
+
+.modalFormSubmitBtn:hover {
+    background: var(--black);
+}
+
+.modalFormAgreement {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modalFormAgreement a {
+    color: #4A5568;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.modalFormAgreement a:hover {
+    color: var(--orange);
+}
+
+.modalCheckboxWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.modalCheckboxWrap input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    opacity: 0.001;
+    margin: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.modalCheckboxCustom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4A5568;
+    border-radius: 3px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.modalCheckboxCustom img {
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.modalCheckboxWrap input:checked + .modalCheckboxCustom {
+    background: var(--orange);
+    border-color: var(--orange);
+}
+
+.modalCheckboxWrap input:checked + .modalCheckboxCustom img {
+    opacity: 1;
+}
+
+.modalCheckboxWrap input:focus + .modalCheckboxCustom {
+    box-shadow: 0 0 0 3px rgba(237, 137, 54, 0.3);
+}
+
+.modalCheckboxWrap input:required + .modalCheckboxCustom {
+    border-color: #4A5568;
+}
+
+.modalCheckboxWrap input:required:not(:checked) + .modalCheckboxCustom {
+    border-color: #4A5568;
+}
+
+.modalCheckboxWrap input:invalid + .modalCheckboxCustom {
+    border-color: #E53E3E;
+}
+
+.modalCheckboxWrap input:invalid:focus + .modalCheckboxCustom {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.3);
+}
+
+
+.modalFormContactRow {
+    padding-top: 50px;
+}
+
+.modalFormContactRowTitle {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117%;
+    letter-spacing: 0.05em;
+    color: var(--blue);
+}
+
+.modalFormContactRowInfo {
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.modalFormContactRowInfoPhone,
+.modalFormContactRowInfoEmail {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.modalFormContactRowInfoPhone a,
+.modalFormContactRowInfoEmail a {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 110%;
+    color: var(--blue);
+    transition: all 0.3s ease;
+}
+
+.modalFormContactRowInfoPhone a:hover,
+.modalFormContactRowInfoEmail a:hover {
+    color: var(--orange);
+}
+
+
+@media (max-width: 767px) {
+    .modalWindow {
+        padding: 30px 24px 40px 24px;
+    }
+
+    .modalTitle {
+        font-size: 26px;
+    }
+
+    .modalFormRow {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .modalFormSubmitRow {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .modalFormSubmitBtn {
+        width: 100%;
+        min-width: unset;
+        padding: 16px 24px;
+        font-size: 18px;
+    }
+
+    .modalFormAgreement {
+        max-width: 100%;
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+    .modalClose {
+        top: 14px;
+        right: 16px;
+    }
+}
+
+
+
 
 
 

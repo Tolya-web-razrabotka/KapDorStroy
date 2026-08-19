@@ -132,4 +132,51 @@ $(document).ready(function () {
             createMap("map");
         });
     }
+
+
+
+
+
+    // Модальное окно "Нужна консультация?"
+
+    var $modalOverlay = $('.modalOverlay');
+    var $modalWindow = $('.modalWindow');
+
+    $modalOverlay.hide();
+
+    $(document).on('click', '.openGetContactModal', function (e) {
+        e.preventDefault();
+        openModal();
+    });
+
+    $modalOverlay.on('click', '.modalClose', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+    });
+
+    $modalOverlay.on('click', function (e) {
+        if (!$(e.target).closest('.modalWindow').length) {
+            closeModal();
+        }
+    });
+
+    $(document).on('keydown', function (e) {
+        if (e.key === 'Escape' && $modalOverlay.is(':visible')) {
+            closeModal();
+        }
+    });
+
+    function openModal() {
+        $modalOverlay.show().css('opacity', '0');
+        $modalOverlay.animate({ opacity: 1 }, 350);
+        $('body').css('overflow', 'hidden');
+    }
+
+    function closeModal() {
+        $modalOverlay.animate({ opacity: 0 }, 300, function () {
+            $(this).hide();
+            $('body').css('overflow', '');
+        });
+    }
 });
