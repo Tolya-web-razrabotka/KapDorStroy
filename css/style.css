@@ -31,6 +31,14 @@
 }
 
 @font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Proxima Nova';
     src: url('../fonts/proxima-nova-regular.ttf') format('truetype');
     font-weight: 400;
@@ -150,6 +158,7 @@ h2,
 h3,
 .h3 {
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .h1,
@@ -2064,6 +2073,76 @@ h2 {
 
 .finishedObjectsPageContent .finishedObjectsCards {
     padding-top: 0px;
+}
+
+.finishedObjectsPageSizeAndJob {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.finishedObjectsPageSize {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 126%;
+    color: var(--blue);
+}
+
+.finishedObjectsJob {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.finishedObjectsJobOrange {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 126%;
+    color: var(--orange);
+}
+
+.finishedObjectsJobBlack {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 126%;
+    color: var(--blue);
+}
+
+.finishedObjectsPageDesc {
+    padding-top: 30px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 110%;
+    color: var(--blue);
+}
+
+
+.finishedObjectsPageCards {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.finishedObjectsPageCard {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 450 / 336;
+    overflow: hidden;
+}
+
+.finishedObjectsPageCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 
