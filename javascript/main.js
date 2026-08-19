@@ -52,6 +52,39 @@ $(document).ready(function () {
         ]
     });
 
+    $('.ourPartnersCards').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: false,
+        infinite: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+
     $('.asphaltTypesTab').on('click', function () {
         var tabId = $(this).data('tab');
         
