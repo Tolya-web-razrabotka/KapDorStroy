@@ -85,6 +85,7 @@ $(document).ready(function () {
         ]
     });
 
+    // Переключение табов в секции "Виды асфальта"
     $('.asphaltTypesTab').on('click', function () {
         var tabId = $(this).data('tab');
         
@@ -113,6 +114,32 @@ $(document).ready(function () {
     var activeTabId = $('.asphaltTypesTab.active').data('tab');
     $('.asphaltTypesCards').each(function () {
         if ($(this).data('tab') === activeTabId) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+
+
+    // Переключение табов на странице "Крупнозернистый асфальт"
+    $('.absSalesInfoTab').on('click', function () {
+        var tabId = $(this).data('tab');
+        
+        if ($(this).hasClass('active')) {
+            return;
+        }
+
+        $('.absSalesInfoTab').removeClass('active');
+        $(this).addClass('active');
+
+        $('.absSalesInfoTabsDesc').hide();
+        
+        $('.absSalesInfoTabsDesc[data-tab="' + tabId + '"]').fadeIn(400);
+    });
+
+    var activeAbsTabId = $('.absSalesInfoTab.active').data('tab');
+    $('.absSalesInfoTabsDesc').each(function () {
+        if ($(this).data('tab') === activeAbsTabId) {
             $(this).show();
         } else {
             $(this).hide();
