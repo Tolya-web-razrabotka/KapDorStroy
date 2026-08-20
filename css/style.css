@@ -386,6 +386,125 @@ h3 {
     color: var(--orange);
 }
 
+.headerLink img {
+    padding-top: 3px;
+    transition: filter 0.3s ease;
+}
+
+.headerLink:hover img {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(89%) saturate(1396%) hue-rotate(346deg) brightness(100%) contrast(99%);
+}
+
+.headerLink.uslugiLink.active img {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(89%) saturate(1396%) hue-rotate(346deg) brightness(100%) contrast(99%);
+    transform: rotate(90deg);
+}
+
+.headerLink.uslugiLink.active {
+    color: var(--orange);
+}
+
+.headerLink.uslugiLink img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+
+
+
+/* Выпадающее меню "Услуги"*/
+
+header {
+    position: relative;
+    z-index: 50;
+}
+
+.headerBottom {
+    position: relative;
+    z-index: 2;
+}
+
+.headerLinks {
+    padding: 16.5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerLink.uslugiLink {
+    position: relative;
+}
+
+.servicesDropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 0;
+    width: 519px;
+    background: var(--white);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 32px 43px;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.servicesDropdown.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.servicesDropdownList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.servicesDropdownItem {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 110%;
+    color: var(--blue);
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.servicesDropdownItem:hover {
+    color: var(--orange);
+}
+
+.headerLink.uslugiLink img {
+    transition: transform 0.3s ease;
+}
+
+.headerLink.uslugiLink.active img {
+    transform: rotate(90deg);
+}
+
+.servicesDropdownOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 49;
+}
+
+.servicesDropdownOverlay.active {
+    display: block;
+}
+
+
+
+
+
+
 
 /* Главный баннер */
 

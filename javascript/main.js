@@ -312,4 +312,62 @@ $(document).ready(function () {
             $('body').css('overflow', '');
         });
     }
+
+
+
+    //  Выпадающее меню в шапке "Услуги" 
+
+    var $servicesDropdown = $('#servicesDropdown');
+    var $uslugiLink = $('.uslugiLink');
+
+    if ($('.servicesDropdownOverlay').length === 0) {
+        $('body').append('<div class="servicesDropdownOverlay"></div>');
+    }
+
+    var $servicesOverlay = $('.servicesDropdownOverlay');
+
+    $uslugiLink.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if ($servicesDropdown.hasClass('active')) {
+            closeServicesDropdown();
+        } else {
+            openServicesDropdown();
+        }
+    });
+
+    $servicesOverlay.on('click', function () {
+        closeServicesDropdown();
+    });
+
+    $(document).on('keydown', function (e) {
+        if (e.key === 'Escape' && $servicesDropdown.hasClass('active')) {
+            closeServicesDropdown();
+        }
+    });
+
+    $(document).on('click', function (e) {
+        if ($servicesDropdown.hasClass('active')) {
+            var $target = $(e.target);
+            if (!$target.closest('.servicesDropdown').length && 
+                !$target.closest('.uslugiLink').length) {
+                closeServicesDropdown();
+            }
+        }
+    });
+
+    function openServicesDropdown() {
+        $servicesDropdown.addClass('active');
+        $uslugiLink.addClass('active');
+        $servicesOverlay.addClass('active');
+        $('body').css('overflow', 'hidden');
+    }
+
+    function closeServicesDropdown() {
+        $servicesDropdown.removeClass('active');
+        $uslugiLink.removeClass('active');
+        $servicesOverlay.removeClass('active');
+        $('body').css('overflow', '');
+    }
 });
