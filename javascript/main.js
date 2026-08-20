@@ -315,16 +315,11 @@ $(document).ready(function () {
 
 
 
+
     //  Выпадающее меню в шапке "Услуги" 
 
     var $servicesDropdown = $('#servicesDropdown');
     var $uslugiLink = $('.uslugiLink');
-
-    if ($('.servicesDropdownOverlay').length === 0) {
-        $('body').append('<div class="servicesDropdownOverlay"></div>');
-    }
-
-    var $servicesOverlay = $('.servicesDropdownOverlay');
 
     $uslugiLink.on('click', function (e) {
         e.preventDefault();
@@ -333,17 +328,8 @@ $(document).ready(function () {
         if ($servicesDropdown.hasClass('active')) {
             closeServicesDropdown();
         } else {
+            closeabsSalesDropdown();
             openServicesDropdown();
-        }
-    });
-
-    $servicesOverlay.on('click', function () {
-        closeServicesDropdown();
-    });
-
-    $(document).on('keydown', function (e) {
-        if (e.key === 'Escape' && $servicesDropdown.hasClass('active')) {
-            closeServicesDropdown();
         }
     });
 
@@ -360,14 +346,52 @@ $(document).ready(function () {
     function openServicesDropdown() {
         $servicesDropdown.addClass('active');
         $uslugiLink.addClass('active');
-        $servicesOverlay.addClass('active');
-        $('body').css('overflow', 'hidden');
     }
 
     function closeServicesDropdown() {
         $servicesDropdown.removeClass('active');
         $uslugiLink.removeClass('active');
-        $servicesOverlay.removeClass('active');
-        $('body').css('overflow', '');
     }
+
+
+    //  Выпадающее меню в шапке "Продажа АБС" 
+
+    var $absSalesDropdown = $('#absSalesDropdown');
+    var $absSalesLink = $('.absSalesLink');
+
+    $absSalesLink.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if ($absSalesDropdown.hasClass('active')) {
+            closeabsSalesDropdown();
+        } else {
+            closeServicesDropdown();
+            openabsSalesDropdown();
+        }
+    });
+
+    $(document).on('click', function (e) {
+        if ($absSalesDropdown.hasClass('active')) {
+            var $target = $(e.target);
+            if (!$target.closest('.absSalesDropdown').length && 
+                !$target.closest('.absSalesLink').length) {
+                closeabsSalesDropdown();
+            }
+        }
+    });
+
+    function openabsSalesDropdown() {
+        $absSalesDropdown.addClass('active');
+        $absSalesLink.addClass('active');
+    }
+
+    function closeabsSalesDropdown() {
+        $absSalesDropdown.removeClass('active');
+        $absSalesLink.removeClass('active');
+    }
+
+    
+
+    
 });

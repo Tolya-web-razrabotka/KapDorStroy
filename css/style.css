@@ -386,28 +386,60 @@ h3 {
     color: var(--orange);
 }
 
-.headerLink img {
-    padding-top: 3px;
-    transition: filter 0.3s ease;
-}
-
-.headerLink:hover img {
-    filter: brightness(0) saturate(100%) invert(67%) sepia(89%) saturate(1396%) hue-rotate(346deg) brightness(100%) contrast(99%);
-}
-
-.headerLink.uslugiLink.active img {
-    filter: brightness(0) saturate(100%) invert(67%) sepia(89%) saturate(1396%) hue-rotate(346deg) brightness(100%) contrast(99%);
-    transform: rotate(90deg);
-}
-
-.headerLink.uslugiLink.active {
+.headerLink.active {
     color: var(--orange);
 }
 
-.headerLink.uslugiLink img {
-    transition: transform 0.3s ease, filter 0.3s ease;
+.headerLinkArrow {
+    position: relative;
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
 }
 
+.headerLinkArrow img {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    transition: opacity 0.3s ease;
+    padding-top: 0;
+}
+
+.headerLinkArrow .arrow-white {
+    opacity: 1;
+}
+
+.headerLinkArrow .arrow-orange {
+    opacity: 0;
+}
+
+.headerLink:hover .headerLinkArrow .arrow-white {
+    opacity: 0;
+}
+
+.headerLink:hover .headerLinkArrow .arrow-orange {
+    opacity: 1;
+}
+
+.headerLink.uslugiLink.active .headerLinkArrow .arrow-white,
+.headerLink.absSalesLink.active .headerLinkArrow .arrow-white {
+    opacity: 0;
+}
+
+.headerLink.uslugiLink.active .headerLinkArrow .arrow-orange,
+.headerLink.absSalesLink.active .headerLinkArrow .arrow-orange {
+    opacity: 1;
+}
+
+.headerLink.uslugiLink.active .headerLinkArrow img,
+.headerLink.absSalesLink.active .headerLinkArrow img {
+    transform: rotate(90deg);
+}
+
+.headerLink.uslugiLink .headerLinkArrow img,
+.headerLink.absSalesLink .headerLinkArrow img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
 
 
@@ -430,6 +462,7 @@ header {
     justify-content: space-between;
 }
 
+.headerLink.absSalesLink,
 .headerLink.uslugiLink {
     position: relative;
 }
@@ -477,11 +510,11 @@ header {
     color: var(--orange);
 }
 
-.headerLink.uslugiLink img {
+.headerLink.absSalesLink img {
     transition: transform 0.3s ease;
 }
 
-.headerLink.uslugiLink.active img {
+.headerLink.absSalesLink.active img {
     transform: rotate(90deg);
 }
 
@@ -499,6 +532,15 @@ header {
 .servicesDropdownOverlay.active {
     display: block;
 }
+
+
+
+
+
+
+
+
+
 
 
 
