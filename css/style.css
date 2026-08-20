@@ -472,7 +472,6 @@ header {
     position: absolute;
     top: calc(100% + 16px);
     left: 0;
-    width: 519px;
     background: var(--white);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     padding: 32px 43px;
@@ -480,6 +479,60 @@ header {
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(-10px);
+}
+
+.absSalesLink .servicesDropdown {
+    width: 519px;
+}
+
+.uslugiLink .servicesDropdown {
+    width: auto;
+    min-width: 300px;
+    max-width: 513px;
+    transition: width 0.3s ease, min-width 0.3s ease;
+}
+
+.uslugiLink .servicesDropdown.has-submenu-open {
+    width: 995px;
+    min-width: 995px;
+}
+
+.servicesDropdownInner {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+}
+
+.servicesDropdownLeft {
+    flex: 0 0 auto;
+    padding-right: 40px;
+    transition: padding-right 0.3s ease;
+}
+
+.servicesDropdownLeft.has-border {
+    border-right: 1px solid #E1EAF6;
+    padding-right: 40px;
+}
+
+.servicesDropdownRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 auto;
+    min-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow: hidden;
+    max-width: 0;
+    padding: 0;
+}
+
+.servicesDropdownRight.visible {
+    opacity: 1;
+    visibility: visible;
+    max-width: 280px;
+    padding-left: 0;
 }
 
 .servicesDropdown.active {
@@ -494,20 +547,55 @@ header {
     gap: 8px;
 }
 
-.servicesDropdownItem {
+.uslugiLink .servicesDropdownItem {
+    position: relative;
+    padding-right: 30px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 110%;
     color: var(--blue);
-    padding: 10px 0;
+    padding: 10px 30px 10px 0;
     transition: all 0.3s ease;
     text-decoration: none;
     border-bottom: 1px solid transparent;
+    cursor: pointer;
+    display: block;
 }
 
-.servicesDropdownItem:hover {
-    color: var(--orange);
+.uslugiLink .servicesDropdownItem::after {
+    content: '';
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 9px;
+    background: url('../images/svg/rightArrowBlue.svg') no-repeat center;
+    background-size: contain;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.uslugiLink .servicesDropdownItem:hover {
+    background-color: #E1EAF6;
+    color: var(--blue);
+}
+
+.uslugiLink .servicesDropdownItem:hover::after {
+    opacity: 1;
+}
+
+.uslugiLink .servicesDropdownItem.active {
+    background-color: #E1EAF6;
+    color: var(--blue);
+}
+
+.uslugiLink .servicesDropdownItem.active::after {
+    opacity: 1;
+}
+.uslugiLink .servicesDropdownItem.active {
+    background-color: #E1EAF6;
 }
 
 .headerLink.absSalesLink img {
@@ -532,6 +620,79 @@ header {
 .servicesDropdownOverlay.active {
     display: block;
 }
+.servicesDropdownInner {
+    display: flex;
+    gap: 40px;
+}
+
+.servicesDropdownLeft {
+    flex: 0 0 auto;
+    padding-right: 40px;
+}
+
+.servicesDropdownLeft.has-border {
+    border-right: 1px solid #E1EAF6;
+}
+
+.servicesDropdownRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 auto;
+    min-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.servicesDropdownRight.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.servicesDropdownRightWrapper {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.servicesDropdownRightWrapper.active {
+    display: flex;
+}
+
+.servicesDropdownRightWrapper a {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 110%;
+    color: var(--blue);
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: auto;
+    border-bottom: 1px solid transparent;
+    padding-right: 5px;
+    white-space: nowrap;
+}
+
+.servicesDropdownRightWrapper a:hover {
+    color: var(--orange);
+    border-bottom: 1px solid var(--orange);
+}
+
+.servicesDropdownItem {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 110%;
+    color: var(--blue);
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    display: block;
+}
+
 
 
 
@@ -1831,6 +1992,7 @@ header {
     justify-content: center;
     z-index: 9999;
     padding: 20px;
+    opacity: 0;
 }
 
 .modalWindow {

@@ -392,6 +392,43 @@ $(document).ready(function () {
     }
 
     
+    // Показ правой колонки при наведении на пункты меню "Услуги" в шапке
+    var dropdownTimer;
 
-    
+    $('.servicesDropdownItem').on('mouseenter', function () {
+        clearTimeout(dropdownTimer);
+        var submenuId = $(this).data('submenu');
+        
+        $('.servicesDropdownItem').removeClass('active');
+        $(this).addClass('active');
+        
+        $('.servicesDropdownRightWrapper').removeClass('active');
+        $('.servicesDropdownRightWrapper[data-submenu="' + submenuId + '"]').addClass('active');
+        
+        $('.servicesDropdownRight').addClass('visible');
+        $('.servicesDropdownLeft').addClass('has-border');
+        $('.servicesDropdown').addClass('has-submenu-open');
+    });
+
+    $('.servicesDropdownLeft').on('mouseleave', function () {
+        dropdownTimer = setTimeout(function() {
+            $('.servicesDropdownRight').removeClass('visible');
+            $('.servicesDropdownLeft').removeClass('has-border');
+            $('.servicesDropdownItem').removeClass('active');
+            $('.servicesDropdownRightWrapper').removeClass('active');
+            $('.servicesDropdown').removeClass('has-submenu-open');
+        }, 150);
+    });
+
+    $('.servicesDropdownRight').on('mouseenter', function () {
+        clearTimeout(dropdownTimer);
+    });
+
+    $('.servicesDropdownRight').on('mouseleave', function () {
+        $('.servicesDropdownRight').removeClass('visible');
+        $('.servicesDropdownLeft').removeClass('has-border');
+        $('.servicesDropdownItem').removeClass('active');
+        $('.servicesDropdownRightWrapper').removeClass('active');
+        $('.servicesDropdown').removeClass('has-submenu-open');
+    });
 });
