@@ -2286,6 +2286,58 @@ h3 {
     margin-bottom: 10px;
 }
 
+.roadConstructionContent {
+    margin-top: 50px;
+}
+
+.roadConstructionPage .finishedObjectsSection {
+    padding-top: 0px;
+}
+
+.faqTabs {
+    min-height: 493px;
+    display: flex;
+    flex-direction: column;
+}
+
+.faqTab {
+    transition: padding-bottom 0.4s ease;
+}
+
+.faqTab:not(:last-child):not(.active) {
+    padding-bottom: 20px;
+}
+
+.faqTab.active {
+    padding-bottom: 0px; 
+}
+
+.faqTabHead {
+    cursor: pointer;
+    background-color: #E1EAF6;
+    padding: 25.5px 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faqTabTitle,
+.faqTabDesc {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 110%;  
+    color: var(--blue);
+}
+
+.faqTabDesc {
+    padding: 20px 37px;
+}
+
+.faqTabHead img {
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+}
 
 /* --- Media styles --- */
 

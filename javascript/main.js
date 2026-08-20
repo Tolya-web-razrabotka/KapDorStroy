@@ -146,6 +146,39 @@ $(document).ready(function () {
         }
     });
 
+
+    // FAQ АККОРДЕОН 
+    $('.faqTabHead').on('click', function () {
+        var $faqTab = $(this).closest('.faqTab');
+        var $desc = $faqTab.find('.faqTabDesc');
+        var $arrow = $(this).find('img');
+
+        if ($faqTab.hasClass('active')) {
+            $desc.slideUp(400);
+            $arrow.css('transform', 'rotate(0deg)');
+            $faqTab.removeClass('active');
+            return;
+        }
+        
+        $('.faqTab').each(function () {
+            var $otherTab = $(this);
+            if (!$otherTab.is($faqTab)) {
+                $otherTab.find('.faqTabDesc').slideUp(300);
+                $otherTab.find('.faqTabHead img').css('transform', 'rotate(0deg)');
+                $otherTab.removeClass('active');
+            }
+        });
+        
+        $desc.slideDown(400);
+        $arrow.css('transform', 'rotate(90deg)'); 
+        $faqTab.addClass('active');
+    });
+
+    $('.faqTabDesc').hide();
+    $('.faqTab:first .faqTabDesc').show();
+    $('.faqTab:first .faqTabHead img').css('transform', 'rotate(90deg)'); 
+    $('.faqTab:first').addClass('active');
+
     
 
     // Яндекс карта
