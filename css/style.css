@@ -2339,6 +2339,100 @@ h3 {
     flex-shrink: 0;
 }
 
+
+.aboutPageContent {
+    margin-top: 30px;
+}
+
+
+
+
+
+/* Секция сертификатов */
+.certificatesSection {
+    padding-top: 150px;
+}
+
+.certificatesCardsSlider {
+    width: 100%;
+}
+.certificatesCardsSlider .slick-list {
+    margin: 0;
+    padding: 0 !important; 
+}
+
+.certificatesCardsSlider .slick-track {
+    display: flex;
+    align-items: stretch;
+    margin-left: 0;
+}
+
+.certificatesCard {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 310px;
+    padding: 0 15px; 
+}
+
+.certificatesCard:first-child {
+    padding-left: 0;
+}
+
+.certificatesCard img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.certificatesCardsDots {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 40px;
+    padding-left: 0; 
+}
+
+.certificatesCardsDots .slick-dots {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.certificatesCardsDots button {
+    display: block;
+    width: 8px;
+    height: 5px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #4A5568;
+    cursor: pointer;
+    font-size: 0;
+    transition: all 0.3s ease;
+}
+
+.certificatesCardsDots .slick-active button {
+    width: 53px;
+    background-color: var(--orange);
+}
+
+.certificatesCardsDots button:hover {
+    background-color: var(--orange);
+}
+
+
+
+
+
 /* --- Media styles --- */
 
 @media screen and (min-width:1450px) {

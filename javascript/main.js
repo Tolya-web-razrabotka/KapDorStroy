@@ -85,6 +85,46 @@ $(document).ready(function () {
         ]
     });
 
+    // Слайдер сертификатов
+    $('.certificatesCardsSlider').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: true,
+        appendDots: '.certificatesCardsDots',
+        customPaging: function (slider, i) {
+            return '<button></button>';
+        },
+        arrows: false,
+        infinite: false,
+        speed: 500,
+        autoplay: false,
+        autoplaySpeed: 4000,
+        pauseOnHover: true,
+        swipe: true,
+        touchMove: true,
+        draggable: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+
     // Переключение табов в секции "Виды асфальта"
     $('.asphaltTypesTab').on('click', function () {
         var tabId = $(this).data('tab');
