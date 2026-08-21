@@ -500,7 +500,6 @@ header {
 .servicesDropdownInner {
     display: flex;
     gap: 40px;
-    white-space: nowrap;
 }
 
 .servicesDropdownLeft {
@@ -519,12 +518,13 @@ header {
     flex-direction: column;
     gap: 20px;
     flex: 0 0 auto;
+    width: 280px; 
     min-width: 280px;
+    max-width: 280px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     overflow: hidden;
-    max-width: 0;
     padding: 0;
 }
 
@@ -534,7 +534,6 @@ header {
     max-width: 280px;
     padding-left: 0;
 }
-
 .servicesDropdown.active {
     display: block;
     opacity: 1;
@@ -667,13 +666,15 @@ header {
     line-height: 110%;
     color: var(--blue);
     transition: all 0.3s ease;
-    display: inline-block;
-    width: auto;
+    display: block; 
+    width: 100%;
     border-bottom: 1px solid transparent;
     padding-right: 5px;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word; 
 }
-
 .servicesDropdownRightWrapper a:hover {
     color: var(--orange);
     border-bottom: 1px solid var(--orange);
