@@ -165,18 +165,18 @@ h3,
 h1 {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
-    font-size: 35px;
-    margin-bottom: 40px;
+    font-size: clamp(18px, 2.5vw, 35px);
+    margin-bottom: clamp(15px, 2.5vw, 40px);
     text-transform: uppercase;
-    line-height: 165%;
+    line-height: clamp(130%, 150%, 165%);
 }
 
 .h2,
 h2 {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
-    font-size: 35px;
-    line-height: 165%;
+    font-size: clamp(18px, 2.5vw, 35px);
+    line-height: clamp(130%, 150%, 165%);
     color: var(--blue);
     text-transform: uppercase;
 }
@@ -185,8 +185,8 @@ h2 {
 h3 {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
-    font-size: 25px;
-    line-height: 126%;
+    font-size: clamp(16px, 1.8vw, 25px);
+    line-height: clamp(130%, 126%, 126%);
     color: var(--blue);
 }
 
@@ -196,7 +196,8 @@ h3 {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    min-width: 1200px;
+    /* min-width: 1200px; */
+    min-width: 340px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -338,7 +339,7 @@ h3 {
 
 .headerGetContactBtn {
     font-weight: 600;
-    font-size: 23px;
+    font-size: clamp(14px, 1.6vw, 23px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,7 +368,7 @@ h3 {
 
 .headerLink {
     font-weight: 600;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);
     line-height: 110%;
     display: flex;
     align-items: center;
@@ -551,7 +552,7 @@ header {
     padding-right: 30px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--blue);
     padding: 10px 30px 10px 0;
@@ -662,7 +663,7 @@ header {
 .servicesDropdownRightWrapper a {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--blue);
     transition: all 0.3s ease;
@@ -683,7 +684,7 @@ header {
 .servicesDropdownItem {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--blue);
     padding: 10px 0;
@@ -695,15 +696,197 @@ header {
 }
 
 
+/* Адаптив Шапки */
+
+@media (max-width: 1370px) {
+    .headerLink {
+        padding-right: 24px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .headerContactTabs,
+    .headerLinks {
+        display: none;
+    }
+}
 
 
 
+/* Бургер меню */
+.burgerMenu {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+}
 
+.burgerBtn {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.burgerBtn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--orange);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
 
+.burgerBtn.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
 
+.burgerBtn.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
 
+.burgerBtn.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
 
+.mobileMenuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobileMenuOverlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100vh;
+    background-color: var(--blue);
+    z-index: 99;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+    padding: 80px 30px 30px;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.mobileMenu.active {
+    right: 0;
+}
+
+.mobileMenuInner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mobileMenuLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mobileMenuLinks a {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.mobileMenuLinks a:hover {
+    color: var(--orange);
+}
+
+.mobileMenuLinkWithSub {
+    cursor: pointer;
+}
+
+.mobileSubMenu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.mobileSubMenu.active {
+    display: flex;
+}
+
+.mobileSubMenu a {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.mobileMenuContacts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileMenuContacts a,
+.mobileMenuContacts div {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.mobileMenuBtn {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--white);
+    background-color: var(--orange);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.mobileMenuBtn:hover {
+    background-color: var(--black);
+}
+
+@media (max-width: 1200px) {
+    .burgerMenu {
+        display: block;
+    }
+    
+    .headerContactTabs,
+    .headerLinks {
+        display: none;
+    }
+    
+    .headerRight {
+        gap: 20px;
+    }
+    
+    .headerGetContactBtn {
+        display: none;
+    }
+}
 
 
 
@@ -725,11 +908,13 @@ header {
     align-items: center;
 }
 
-.mainBannerContent {
+.mainBannerContentInner {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     height: 100%;
+    gap: 20px;
 }
 
 .mainBannerLeft {
@@ -740,7 +925,7 @@ header {
     flex-direction: column;
     justify-content: space-between;
     padding-top: 70px;
-    padding-bottom: 120px;
+    padding-bottom: 220px;
 }
 
 .mainBannerRight {
@@ -749,7 +934,7 @@ header {
 
 .mainBannerDesc {
     font-weight: 500;
-    font-size: 25px;
+    font-size: clamp(16px, 1.8vw, 25px);
     line-height: 117%;
     letter-spacing: 0.05em;
 }
@@ -762,8 +947,8 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--orange);
-    padding: 25px 70px;
-    font-size: 23px;
+    padding: clamp(15px, 2vw, 25px) clamp(30px, 4vw, 70px);
+    font-size: clamp(14px, 1.6vw, 23px);
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -773,7 +958,21 @@ header {
 }
 
 
+/* Адаптив "Главный баннер" */
 
+@media (max-width: 900px) {
+    .mainBannerContentInner {
+        flex-direction: column;
+    }
+
+    .mainBannerLeft {
+        padding-bottom: 0px;
+    }
+
+    .mainBannerRight {
+        padding-bottom: 100px;
+    }
+}
 
 /* Секция "Строим дороги - создаем будущее" */
 
@@ -801,7 +1000,7 @@ header {
     padding-left: 48px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     color: var(--blue);
     line-height: 117%;
     letter-spacing: 0.05em;
@@ -827,7 +1026,7 @@ header {
 
 .buildRoadsContentLeft {
     color: var(--blue);
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     font-weight: 500;
     line-height: 110%;
 }
@@ -844,7 +1043,7 @@ header {
 .buildRoadsContentLeft ul li {
     position: relative;
     padding-left: 20px;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     font-weight: 500;
     line-height: 130%;
     color: var(--blue);
@@ -917,7 +1116,7 @@ header {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     font-weight: 600;
     background-color: var(--orange);
     transition: all 0.3s ease;
@@ -931,6 +1130,32 @@ header {
     padding-top: 3px;
 }
 
+
+/* Адаптив секции "Строим дороги - создаем будущее" */
+
+@media (max-width: 1300px) {
+    .buildRoadsContent {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .buildRoadsAdvantageCards {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .buildRoadsDetailsBtn {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .buildRoadsAdvantageCards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 
 
@@ -1010,7 +1235,7 @@ header {
     width: 100%;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
-    font-size: 25px;
+    font-size: clamp(16px, 1.8vw, 25px);
     line-height: 126%;
     color: var(--blue);
     padding-left: 15px;
@@ -1037,7 +1262,49 @@ header {
     aspect-ratio: 450 / 315;
 }
 
+/* Адаптив секции "Объекты, которые меняют города" */
 
+@media (max-width: 1500px) {
+    .objectsContent {
+        grid-template-columns: 1fr;
+    }
+
+    .objectsContentLeft .objectsCard {
+        max-width: 100%;
+        max-height: 483px;
+    }
+
+    .objectsContentLeft .objectsCardImage img {
+        object-position: center 70%;
+    }
+
+    .objectsContentRight .objectsCard {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .objectsContentLeft .objectsCard {
+        max-height: 367px;
+    }
+}
+
+@media (max-width: 800px) {
+    .objectsContentLeft .objectsCard {
+        max-height: 258px;
+    }
+}
+
+@media (max-width: 650px) {
+    .objectsContentRight {
+        grid-template-columns: 1fr;
+    }
+
+    .objectsContentLeft .objectsCard,
+    .objectsContentRight .objectsCard {
+        max-height: 330px;
+    }
+}
 
 
 /* Секция "Выгодные предложения" */
@@ -1087,9 +1354,11 @@ header {
 
 .dealsCard {
     position: relative;
-    width: 1410px;
+    width: 100%;
+    max-width: 1410px;
     min-height: 465px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .dealsCardImage {
@@ -1110,10 +1379,10 @@ header {
 .dealsCardInfo {
     max-width: 630px;
     width: 100%;
-    padding-top: 84px;
-    padding-left: 61px;
+    padding: 84px 20px 20px 61px;
     position: relative;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 .dealsCardTitle {
@@ -1132,12 +1401,15 @@ header {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 331px;
+    max-width: 331px;
+    width: clamp(60px, 25vw, 331px);
     height: 3px;
     background-color: var(--orange);
+    padding-right: 30px;
 }
 
 .dealsCardDesc {
+    padding-right: 20px;
     padding-top: 10px;
     font-family: 'Gilroy';
     font-weight: 500;
@@ -1156,13 +1428,14 @@ header {
 
 .dealsCardGetContactBtn,
 .dealsCardAllSharesLink {
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     font-family: "Gilroy", sans-serif;
     font-weight: 600;
-    font-size: 23px;
+    font-size: clamp(14px, 1.6vw, 23px);
     line-height: 110%;
 }
 
@@ -1247,7 +1520,101 @@ header {
     pointer-events: auto;
 }
 
+@media (max-width: 900px) {
+    .dealsCardInfo {
+        padding: 75px 20px 20px 35px;
+    }
 
+    .dealsCardButtons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .dealsCardGetContactBtn,
+    .dealsCardAllSharesLink {
+        white-space: normal;
+        padding: 17px 39px;
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 730px) {
+    .dealsCardInfo {
+        padding: 100px 16px 20px 20px;
+    }
+
+    .dealsCardTitle {
+        font-size: clamp(18px, 4vw, 35px);
+    }
+
+    .dealsCardDesc {
+        font-size: clamp(14px, 2.5vw, 18px);
+        padding-right: 0;
+    }
+
+    .dealsCardGetContactBtn,
+    .dealsCardAllSharesLink {
+        font-size: clamp(16px, 3vw, 23px);
+        padding: 14px 30px;
+        /* max-width: 100%; */
+    }
+
+    .dealsCardButtons {
+        margin-top: 40px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dealsSection {
+        height: 657px;
+    }
+
+    .dealsCardInfo {
+        padding: 60px 12px 15px 15px;
+    }
+
+    .dealsCardTitle {
+        font-size: clamp(16px, 3.5vw, 22px);
+        padding-bottom: 8px;
+    }
+
+    .dealsCardTitle::after {
+        width: clamp(40px, 20vw, 100px);
+    }
+
+    .dealsCardDesc {
+        font-size: clamp(12px, 2vw, 16px);
+        padding-top: 8px;
+    }
+
+    .dealsCardButtons {
+        margin-top: 25px;
+    }
+
+    .dealsCardGetContactBtn,
+    .dealsCardAllSharesLink {
+        font-size: clamp(14px, 2.5vw, 18px);
+        padding: 12px 20px;
+        gap: 6px;
+    }
+
+    .dealsCard {
+        min-height: 350px;
+    }
+
+    .dealsCardAllSharesLink img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .dealsDots {
+        margin-top: 20px;
+        padding-left: 0;
+    }
+}
 
 
 /* Секция "Виды асфальта, которые производим" */
@@ -1283,7 +1650,7 @@ header {
 .goCatalogBtn {
     font-family: 'Gilroy', sans-serif;
     font-weight: 600;
-    font-size: 23px;
+    font-size: clamp(14px, 1.6vw, 23px);
     line-height: 110%;
     color: var(--orange);
     transition: all 0.3s ease;
@@ -1307,7 +1674,7 @@ header {
     padding: 15px 26.5px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 17px;
+     font-size: clamp(12px, 1.2vw, 17px);
     line-height: 110%;
     color: #4A5568;
     cursor: pointer;
@@ -1331,6 +1698,7 @@ header {
     gap: 25px;
     border: 1px solid #EAEAEA;
     padding: 15px;
+    height: 100%;
 }
 
 .asphaltTypesCardImage {
@@ -1347,9 +1715,10 @@ header {
 .asphaltTypesCardTitle {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
-    font-size: 25px;
+    font-size: clamp(16px, 1.8vw, 25px);
     line-height: 126%;
     color: var(--blue);
+    flex: 0 0 auto;
 }
 
 .readMoreLink {
@@ -1360,18 +1729,53 @@ header {
     gap: 7px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 17px;
+     font-size: clamp(12px, 1.2vw, 17px);
     line-height: 110%;
     color: var(--white);
     background-color: var(--orange);
     width: 100%;
     box-sizing: border-box;
     transition: all 0.3s ease;
+    margin-top: auto;
 }
 
 
 .readMoreLink:hover {
     background-color: var(--black);
+}
+
+/* Адаптив секции "Виды асфальта, которые производим" */
+
+@media (max-width : 900px) {
+    .asphaltTypesCards {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .asphaltTypesCards {
+        grid-template-columns: repeat(2, 1fr);
+    }   
+
+    .sectionHeadFlex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .sectionHeadFlex.alignFlexEnd {
+        align-items: flex-start;
+    }
+
+    .goCatalogBtn {
+        padding-left: 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    .asphaltTypesCards {
+        grid-template-columns: 1fr;
+    }   
 }
 
 
@@ -1435,7 +1839,7 @@ header {
 .finishedObjectsCard.hasLink .finishedObjectsCardMoreLink {
     font-family: 'Gilroy';
     font-weight: 600;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     max-width: 214px;
     width: 100%;
     display: flex;
@@ -1559,7 +1963,7 @@ header {
     padding-bottom: 10px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 126%;
 }
 
@@ -1579,7 +1983,7 @@ header {
     gap: 8px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
-    font-size: 17px;
+     font-size: clamp(12px, 1.2vw, 17px);
     line-height: 126%;
     color: var(--orange);
     flex-shrink: 0;
@@ -1680,85 +2084,26 @@ header {
     background-color: var(--orange);
 }
 
-/* 
-@media (max-width: 1024px) {
+
+/* Адаптив секции "Готовые объекты" */
+
+@media (max-width: 1100px) {
     .finishedObjectsCards {
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
-    }
-    
-    .finishedObjectsCard {
-        width: 100%;
-        max-width: 450px;
-        height: 375px;
-    }
-
-    .finishedObjectsCard.hasLink:hover .finishedObjectsCardInfo {
-        transform: translateY(-60px);
-        padding: 15px 27px 18px;
-    }
-
-    .finishedObjectsCard.hasLink:hover .finishedObjectsCardSlider .slick-dots {
-        transform: translateY(-60px);
+        gap: 15px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
+    .finishedObjectsCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
     .finishedObjectsCards {
         grid-template-columns: 1fr;
-        gap: 20px;
-        justify-items: center;
     }
-    
-    .finishedObjectsSection {
-        padding-top: 80px;
-    }
-    
-    .finishedObjectsCard {
-        width: 100%;
-        max-width: 450px;
-        height: 375px;
-    }
-
-    .finishedObjectsCard.hasLink:hover .finishedObjectsCardInfo {
-        transform: translateY(-55px);
-        padding: 10px 16px 14px;
-    }
-
-    .finishedObjectsCard.hasLink:hover .finishedObjectsCardSlider .slick-dots {
-        transform: translateY(-55px);
-    }
-    
-    .finishedObjectsCardInfo {
-        padding: 10px 16px;
-        height: 149px;
-    }
-
-    .finishedObjectsCard.hasLink .finishedObjectsCardInfo {
-        padding: 10px 16px;
-    }
-    
-    .finishedObjectsCardTitle {
-        font-size: 15px;
-    }
-
-    .finishedObjectsCardDesc {
-        font-size: 13px;
-    }
-    
-    .finishedObjectsCardSize {
-        font-size: 15px;
-    }
-
-    .finishedObjectsCardMoreLink {
-        font-size: 16px;
-        max-width: 180px;
-    }
-
-    .finishedObjectsCard.hasLink:hover .finishedObjectsCardMoreLink {
-        padding: 11px 0px;
-    }
-} */
+}
 
 /* Секция "Наши Партнеры" */
 
@@ -1885,7 +2230,7 @@ header {
     padding: 17px 31px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 600;
-    font-size: 23px;
+    font-size: clamp(14px, 1.6vw, 23px);
     line-height: 110%;
     color: var(--white);
     background-color: var(--orange);
@@ -1897,6 +2242,10 @@ header {
     background-color: var(--black);
 }
 
+.footerContentRight {
+    width: 100%;
+    min-width: 0;
+}
 
 .footerCopyright {
     padding-bottom: 60px;
@@ -1908,6 +2257,7 @@ header {
 .footerCopyrightLeftLinks {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 46px;
 }
 
@@ -1975,8 +2325,63 @@ header {
     box-shadow: none !important;
 }
 
+/* Адаптив Footer */
 
+/* @media (max-width: 1350px) {
+    .footerContent {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 
+    .footerContentRight {
+        width: 100%;
+    }
+
+    .maps {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .maps {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .maps {
+        height: 200px;
+    }
+} */
+
+@media (max-width: 1200px) {
+    .footerContent {
+        grid-template-columns: minmax(0px, 350px) auto;
+    }
+}
+
+@media (max-width: 1150px) {
+    .footerCopyright {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .footerCopyrightRight {
+        text-align: left;
+    }
+}
+
+@media (max-width: 800px) {
+    .footerContent {
+        grid-template-columns: 1fr;
+    }
+
+    .footerCopyrightLeftLinks {
+        gap: 20px;
+    }
+}
 
 /* Модальное окно "Нужна консультация?" */
 
@@ -2050,7 +2455,7 @@ header {
     position: relative;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 117%;
     color: var(--blue);
     letter-spacing: 0.05em;
@@ -2121,7 +2526,7 @@ header {
     color: #4A5568;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 136%;
 
 }
@@ -2165,7 +2570,7 @@ header {
 .modalFormSubmitBtn {
     font-family: 'Gilroy', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--white);
     background: var(--orange);
@@ -2279,7 +2684,7 @@ header {
 .modalFormContactRowTitle {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 117%;
     letter-spacing: 0.05em;
     color: var(--blue);
@@ -2420,7 +2825,7 @@ header {
     gap: 10px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 126%;
     color: var(--blue);
 }
@@ -2434,7 +2839,7 @@ header {
 .finishedObjectsJobOrange {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 126%;
     color: var(--orange);
 }
@@ -2442,7 +2847,7 @@ header {
 .finishedObjectsJobBlack {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 126%;
     color: var(--blue);
 }
@@ -2451,7 +2856,7 @@ header {
     padding-top: 30px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--blue);
 }
@@ -2509,7 +2914,7 @@ header {
 .absSalesInfoProductPriceDesc {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 17px;
+     font-size: clamp(12px, 1.2vw, 17px);
     line-height: 110%;
     color: #4A5568;
 }
@@ -2525,7 +2930,7 @@ header {
     color: var(--white);
     font-family: 'Gilroy', sans-serif;
     font-weight: 700;
-    font-size: 23px;
+    font-size: clamp(14px, 1.6vw, 23px);
     line-height: 110%;
     background-color: var(--orange);
     padding: 17px 0px;
@@ -2560,7 +2965,7 @@ header {
     color: #4A5568;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 17px;
+     font-size: clamp(12px, 1.2vw, 17px);
     line-height: 110%;
     background-color: #f7fafc;
     transition: all 0.3s ease;
@@ -2590,7 +2995,7 @@ header {
 .absSalesInfoTabsDesc div:not(.h3) {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--blue);
 }
@@ -2604,7 +3009,7 @@ header {
 .absSalesInfoTabsDesc ul li {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;
     color: var(--blue);
     margin-bottom: 10px;
@@ -2649,7 +3054,7 @@ header {
 .faqTabDesc {
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(14px, 1.4vw, 20px);;
     line-height: 110%;  
     color: var(--blue);
 }
@@ -2764,6 +3169,10 @@ header {
         width: 1440px;
     }
 }
+
+
+
+
 
 @media screen and (min-width:1200px) {}
 

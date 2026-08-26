@@ -125,6 +125,58 @@ $(document).ready(function () {
         ]
     });
 
+    
+
+    // Бургер меню
+    var $burgerBtn = $('.burgerBtn');
+    var $mobileMenu = $('.mobileMenu');
+    var $mobileOverlay = $('.mobileMenuOverlay');
+
+    function openMobileMenu() {
+        $burgerBtn.addClass('active');
+        $mobileMenu.addClass('active');
+        $mobileOverlay.addClass('active');
+        $('body').css('overflow', 'hidden');
+    }
+
+    function closeMobileMenu() {
+        $burgerBtn.removeClass('active');
+        $mobileMenu.removeClass('active');
+        $mobileOverlay.removeClass('active');
+        $('body').css('overflow', '');
+    }
+
+    $burgerBtn.on('click', function(e) {
+        e.stopPropagation();
+        if ($mobileMenu.hasClass('active')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    });
+
+    $mobileOverlay.on('click', function() {
+        closeMobileMenu();
+    });
+
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $mobileMenu.hasClass('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    $('.mobileMenuLinkWithSub').on('click', function(e) {
+        e.preventDefault();
+        var $sub = $(this).next('.mobileSubMenu');
+        $sub.slideToggle(300);
+        $sub.toggleClass('active');
+    });
+
+    $('.mobileMenuLinks a:not(.mobileMenuLinkWithSub)').on('click', function() {
+        closeMobileMenu();
+    });
+
+
     // Переключение табов в секции "Виды асфальта"
     $('.asphaltTypesTab').on('click', function () {
         var tabId = $(this).data('tab');
